@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2021 R2D2 - Arturo Astorga
+ */
+package com.aplazo.r2d2.payment.quote.constant;
+
+import org.springframework.stereotype.Component;
+
+/**
+ * Description: Constantes de codigo duro.
+ * @author arturoastorga file: Constant.java
+ * @since Oct 23, 2021
+ */
+@Component
+public class Constant {
+  
+  /**
+   * Placeholder de la llave del '.properites' para el valor del paquete.
+   */
+  public static final String BASE_PACKAGE_ASTERICK = "com.aplazo.r2d2.*";
+  
+  /**
+   * Cadena para pintar la respuesta.
+   */
+  public static final String RESPONSE = "Response: {}";
+  
+  /**
+   * Constante utilizada para representar el nombre del header Host.
+   */
+  public static final String HOST = "Host";
+  /**
+   * Constante utilizada para representar el nombre del header User-Agent.
+   */
+  public static final String USER_AGENT = "User-Agent";
+  
+  /**
+   * Constante String vacio.
+   */
+  public static final String EMPTY_STRING = "";
+  
+  /**
+   * Constante utilizada para representar el nombre del header Host.
+   */
+  public static final Boolean TRUE = true;
+  
+  /**
+   * Constante String vacio.
+   */
+  public static final String MESSAGE_ERROR = "Se recibio un parametro fuera de los valores permitidos.";
+  
+  
+  /**
+   * Constante entera 1.
+   */
+  public static final int UNO_ENTERO=1; 
+  
+  /**
+   * Constante entera 4.
+   */
+  public static final int CUATRO_ENTERO=4;
+  
+  /**
+   * Constante entera 52.
+   */
+  public static final int CINCODOS_ENTERO=52;
+  
+  /**
+   * Constante entera 100.
+   */
+  public static final double CIEN_ENTERO=100;
+  
+  /**
+   * Constante entera 999999.
+   */
+  public static final int NUEVES_ENTERO=999999;
+
+}
