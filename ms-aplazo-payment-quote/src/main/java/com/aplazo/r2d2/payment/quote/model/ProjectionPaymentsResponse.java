@@ -5,22 +5,30 @@ package com.aplazo.r2d2.payment.quote.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import java.util.List;
+import java.time.LocalDate;
 
 /**
- * Description: Cuerpo de la respuesta
+ * Description: Cuerpo de la lista.
  * 
- * @author arturoastorga file: ProjectionPaymentsResponse.java
+ * @author arturoastorga file: ProjectionPayments.java
  * @since Oct 23, 2021
  */
 @Data
-@ToString
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProjectionPaymentsResponse {
+  /**
+   * numero abono.
+   */
+  private int paymentNumber;
 
-  List<ProjectionPayments> projectionPayments;
+  /**
+   * abono.
+   */
+  private double amount;
+
+  /**
+   * fecha de pago.
+   */
+  private LocalDate paymentDate;
 
 }

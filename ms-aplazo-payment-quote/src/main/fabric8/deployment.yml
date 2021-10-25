@@ -1,0 +1,62 @@
+metadata:
+  labels:
+    app: ms-aplazo-payment-quote
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: 'default'
+            - name: JAVA_TOOL_OPTIONS
+              value: >-
+                -XX:+UnlockExperimentalVMOptions
+                -XX:+UseCGroupMemoryLimitForHeap
+          name: ms-aplazo-payment-quote
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 9779
+              name: prometheus
+              protocol: TCP
+            - containerPort: 8778
+              name: jolokia
+              protocol: TCP
+            - containerPort: 8181
+              name: actuator
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8181
+              scheme: HTTP
+            initialDelaySeconds: 140
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /actuator/health
+              port: 8181
+              scheme: HTTP
+            initialDelaySeconds: 140
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256M
+            requests:
+              cpu: 100m
+              memory: 128M
+          volumeMounts:
+          - name: ms-aplazo-payment-quote-config
+            mountPath: /deployments/config
+          - mountPath: /deployments/data
+            name: secret-crypt-keys-pairs
+      volumes:
+        - name: ms-aplazo-payment-quote-config
+          configMap:
+            name: ms-aplazo-payment-quote

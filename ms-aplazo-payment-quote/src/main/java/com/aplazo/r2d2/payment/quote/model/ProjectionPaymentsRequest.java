@@ -3,6 +3,7 @@
  */
 package com.aplazo.r2d2.payment.quote.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@AllArgsConstructor
 public class ProjectionPaymentsRequest {
   /**
    * credito.

@@ -5,7 +5,7 @@ package com.aplazo.r2d2.payment.quote.business;
 
 import com.aplazo.r2d2.payment.quote.constant.Constant;
 import com.aplazo.r2d2.payment.quote.model.ErrorRequest;
-import com.aplazo.r2d2.payment.quote.model.ProjectionPayments;
+import com.aplazo.r2d2.payment.quote.model.ProjectionPaymentsResponse;
 import com.aplazo.r2d2.payment.quote.model.ProjectionPaymentsRequest;
 import com.aplazo.r2d2.payment.quote.service.MsAplazoPaymentQuoteService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,10 +36,10 @@ public class MsAplazoPaymentQuoteBusiness implements MsAplazoPaymentQuoteService
           * (Constant.ONE_INT + (projectionPaymentsRequest.getRate() / Constant.ONE_HUNDRED_INT)))
           / projectionPaymentsRequest.getTerms();
       abono = Math.round(abono * Constant.ONE_HUNDRED_POINT_ZERO) / Constant.ONE_HUNDRED_POINT_ZERO;
-      List<ProjectionPayments> listProjectionPayments = new ArrayList<>();
+      List<ProjectionPaymentsResponse> listProjectionPayments = new ArrayList<>();
       LocalDate localDate = obtenerSabado();
       while (nAbono <= projectionPaymentsRequest.getTerms()) {
-        listProjectionPayments.add(new ProjectionPayments(nAbono, abono, localDate));
+        listProjectionPayments.add(new ProjectionPaymentsResponse(nAbono, abono, localDate));
         localDate = localDate.plusDays(Constant.SEVEN_INT);
         nAbono += Constant.ONE_INT;
       }
@@ -63,15 +63,6 @@ public class MsAplazoPaymentQuoteBusiness implements MsAplazoPaymentQuoteService
         || projectionPaymentsRequest.getRate() > Constant.ONE_HUNDRED_INT
         || projectionPaymentsRequest.getTerms() < Constant.FOUR_INT
         || projectionPaymentsRequest.getTerms() > Constant.FIFTY_TWO_INT) ? false : true;
-    /*
-     * if (projectionPaymentsRequest.getAmount() < Constant.ONE_INT ||
-     * projectionPaymentsRequest.getAmount() > Constant.NINE_INT) return false; if
-     * (projectionPaymentsRequest.getRate() < Constant.ONE_INT ||
-     * projectionPaymentsRequest.getRate() > Constant.CIEN_ENTERO) return false; if
-     * (projectionPaymentsRequest.getTerms() < Constant.FOUR_INT ||
-     * projectionPaymentsRequest.getTerms() > Constant.CINCODOS_ENTERO) return false; return true;
-     * 
-     */
   }
 
   private LocalDate obtenerSabado() {
@@ -79,11 +70,6 @@ public class MsAplazoPaymentQuoteBusiness implements MsAplazoPaymentQuoteService
     return (LocalDate.now().getDayOfWeek().getValue() == Constant.SEVEN_INT)
         ? LocalDate.now().plusDays(Constant.SIX_INT)
         : LocalDate.now().plusDays(Constant.SIX_INT - LocalDate.now().getDayOfWeek().getValue());
-    /*
-     * LocalDate date = LocalDate.now(); int value = date.getDayOfWeek().getValue(); if (value ==
-     * Constant.SEVEN_INT) return date.plusDays(Constant.SIX_INT); else { return
-     * date.plusDays(Constant.SIX_INT - value); }
-     */
   }
 
 }

@@ -39,11 +39,6 @@ public class Constant {
   public static final String EMPTY_STRING = "";
 
   /**
-   * Constante utilizada para representar el nombre del header Host.
-   */
-  public static final Boolean TRUE = true;
-
-  /**
    * Constante String vacio.
    */
   public static final String MESSAGE_ERROR =
