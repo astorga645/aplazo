@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.io.Serializable;
 
 /**
  * Description:
@@ -18,7 +19,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class ResponseId {
+public class ResponseId implements Serializable {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = -299633570420774079L;
 
   private int idRequest;
 

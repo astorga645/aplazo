@@ -9,7 +9,7 @@ data:
     # Propiedades de tomcat                                             #
     #===================================================================#
     spring.application.name=development
-    spring.profiles.active=development
+    spring.profiles.active=true
     server.port=8181
     
     #===================================================================#
