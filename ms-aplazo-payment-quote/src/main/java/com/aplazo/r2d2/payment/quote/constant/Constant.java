@@ -36,6 +36,16 @@ public class Constant {
   /**
    * Constante String vacio.
    */
+  public static final String REQUEST_TABLE = "Request";
+  
+  /**
+   * Constante String tabla.
+   */
+  public static final String RESPONSE_TABLE = "Response";
+  
+  /**
+   * Constante String vacio.
+   */
   public static final String EMPTY_STRING = "";
 
   /**

@@ -5,7 +5,6 @@ package com.aplazo.r2d2.payment.quote.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
 
 /**
  * Description: Cuerpo de la peticion
@@ -14,7 +13,6 @@ import lombok.ToString;
  * @since Oct 23, 2021
  */
 @Data
-@ToString
 @AllArgsConstructor
 public class ProjectionPaymentsRequest {
   /**

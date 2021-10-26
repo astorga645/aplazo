@@ -44,8 +44,6 @@ public class MsAplazoPaymentQuoteBusinessTest {
     ProjectionPaymentsRequest projectionPaymentsRequest = new ProjectionPaymentsRequest(
         TestConstants.ONE_HUNDRED_DOUBLE, TestConstants.FIFTEN_INT, TestConstants.TEEN_INT);
 
-    // assertNotNull(msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest));
-
     assertEquals(
         msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest).getStatusCode(),
         HttpStatus.OK);
@@ -77,7 +75,6 @@ public class MsAplazoPaymentQuoteBusinessTest {
     assertEquals(
         msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest).getStatusCode(),
         HttpStatus.BAD_REQUEST);
-    // assertNotNull(msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest));
   }
   
   /**
@@ -106,7 +103,6 @@ public class MsAplazoPaymentQuoteBusinessTest {
     assertEquals(
         msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest).getStatusCode(),
         HttpStatus.BAD_REQUEST);
-    // assertNotNull(msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest));
   }
   
   /**
@@ -115,8 +111,14 @@ public class MsAplazoPaymentQuoteBusinessTest {
    */
   @Test
   public final void testGetProjectionFailMinimumRate() {
+    
     ProjectionPaymentsRequest projectionPaymentsRequest = new ProjectionPaymentsRequest(
         TestConstants.ONE_HUNDRED_DOUBLE, TestConstants.FIFTEN_INT, TestConstants.ZERO_INT);
+    
+    
+    projectionPaymentsRequest.setAmount(projectionPaymentsRequest.getAmount());
+    projectionPaymentsRequest.setTerms(projectionPaymentsRequest.getTerms());
+    projectionPaymentsRequest.setRate(projectionPaymentsRequest.getRate());
 
     assertEquals(
         msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest).getStatusCode(),
@@ -135,7 +137,6 @@ public class MsAplazoPaymentQuoteBusinessTest {
     assertEquals(
         msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest).getStatusCode(),
         HttpStatus.BAD_REQUEST);
-    // assertNotNull(msAplazoPaymentQuoteBusiness.getProjection(projectionPaymentsRequest));
   }
 
 }
